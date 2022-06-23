@@ -4,9 +4,7 @@ import com.example.mycli.exceptions.AccountCheckLoginPassword;
 import com.example.mycli.exceptions.AccountConflict;
 import com.example.mycli.exceptions.AccountCreated;
 import com.example.mycli.exceptions.AccountNotFound;
-import com.example.mycli.exceptions.exception.TournamentException;
 import com.example.mycli.model.UserEntity;
-import com.example.mycli.model.entity.Participant;
 import com.example.mycli.repository.UserEntityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @RequiredArgsConstructor
-
+@RequestMapping("/api")
 public class AuthController {
     private final UserService userService;
     private final JwtProvider jwtProvider;

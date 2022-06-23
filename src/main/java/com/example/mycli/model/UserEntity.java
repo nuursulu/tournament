@@ -1,7 +1,9 @@
 package com.example.mycli.model;
 
+import com.example.mycli.Alogic.entity.Tourney;
 import lombok.*;
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @Getter
@@ -22,5 +24,10 @@ public class UserEntity {
 
     @ManyToOne
     private RoleEntity roleEntity;
+
+    @ManyToMany
+    private List<Tourney> tourneyList;
+
+
 
 }
