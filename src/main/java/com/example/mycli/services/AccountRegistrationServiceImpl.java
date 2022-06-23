@@ -19,6 +19,7 @@ public class AccountRegistrationServiceImpl implements AccountRegistrationServic
         UserEntity u = new UserEntity();
         u.setPassword(password);
         u.setLogin(login);
+        u.setTourney(null);
         userService.saveUser(u);
         return "Ok";
     }

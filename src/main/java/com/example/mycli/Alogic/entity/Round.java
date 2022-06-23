@@ -17,7 +17,7 @@ public class Round {
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "tourney_id")
-    private Tourney tourney = null;
+    private Tourney tourney;
 
 
 }

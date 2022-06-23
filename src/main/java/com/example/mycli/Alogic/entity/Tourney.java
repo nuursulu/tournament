@@ -22,11 +22,11 @@ public class Tourney {
     @JsonIgnore
     private boolean onHold = true;
 
-    private LocalDateTime startTime=null;
-    private LocalDateTime finishTime=null;
+    private LocalDateTime startTime;
+    private LocalDateTime finishTime;
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "tourney")
-    private List<UserEntity> participants=null;
+    private List<UserEntity> participants;
 
 
 

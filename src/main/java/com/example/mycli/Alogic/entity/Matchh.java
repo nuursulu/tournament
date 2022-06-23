@@ -14,26 +14,26 @@ public class Matchh {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private LocalDateTime startTime=null;
-    private LocalDateTime finishTime=null;
+    private LocalDateTime startTime;
+    private LocalDateTime finishTime;
 
-    private Long firstParticipantScore=null;
-    private Long secondParticipantScore=null;
+    private Long firstParticipantScore;
+    private Long secondParticipantScore;
 
-
-    private Long firstParticipantId=null;
-
-    private Long secondParticipantId=null;
+    @JsonIgnore
+    private Long firstParticipantId;
+    @JsonIgnore
+    private Long secondParticipantId;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "round_id")
-    private Round round=null;
+    private Round round;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "tourney_id")
-    private Tourney tourney=null;
+    private Tourney tourney;
 
 
 }
