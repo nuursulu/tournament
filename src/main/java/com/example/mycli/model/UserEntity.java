@@ -25,5 +25,9 @@ public class UserEntity {
 
     @ManyToOne
     private RoleEntity roleEntity;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "tournament_id", nullable = false)
+    @JsonIgnore
+    private Tourney tourney;
 
 }

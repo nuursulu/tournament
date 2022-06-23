@@ -18,10 +18,10 @@ public class Part {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "user_id", nullable = false)
-    @JsonIgnore
-    private UserEntity userEntity;
+//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    @JsonIgnore
+//    private UserEntity userEntity;
     private String nickname;
 
     @JsonIgnore
