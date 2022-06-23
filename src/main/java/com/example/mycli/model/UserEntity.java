@@ -1,5 +1,8 @@
 package com.example.mycli.model;
 
+import com.example.mycli.Alogic.entity.Tourney;
+import com.example.mycli.model.entity.Tournament;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 
@@ -22,5 +25,11 @@ public class UserEntity {
 
     @ManyToOne
     private RoleEntity roleEntity;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "tourney_id", nullable = false)
+    @JsonIgnore
+    private Tourney tourney = null;
+
 
 }
