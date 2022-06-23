@@ -29,7 +29,7 @@ public class MatchService {
     public List<Match> findAllMatches(Long tournamentId) {
         Optional<Tournament> tournamentOptional = tournamentRepository.findById(tournamentId);
 
-        if (tournamentOptional.isEmpty()) {
+        if (!tournamentOptional.isPresent()) {
             throw new TournamentException(Utils.tournamentNotFoundMessage(tournamentId));
         }
 
@@ -42,7 +42,7 @@ public class MatchService {
                                 Long secondParticipantScore) {
         Optional<Tournament> tournamentOptional = tournamentRepository.findById(tournamentId);
 
-        if (tournamentOptional.isEmpty()) {
+        if (!tournamentOptional.isPresent()) {
             throw new TournamentException(Utils.tournamentNotFoundMessage(tournamentId));
         }
 
@@ -64,14 +64,14 @@ public class MatchService {
 
                     Optional<Participant> firstParticipantOptional =
                             participantRepository.findById(match.getFirstParticipantId());
-                    if (firstParticipantOptional.isEmpty()) {
+                    if (!tournamentOptional.isPresent()) {
                         return match;
                     }
                     Participant firstParticipant = firstParticipantOptional.get();
 
                     Optional<Participant> secondParticipantOptional =
                             participantRepository.findById(match.getSecondParticipantId());
-                    if (secondParticipantOptional.isEmpty()) {
+                    if (!tournamentOptional.isPresent()) {
                         return match;
                     }
                     Participant secondParticipant = secondParticipantOptional.get();

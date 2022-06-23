@@ -89,7 +89,7 @@ public class ParticipantService {
 
         Optional<Tournament> tournamentOptional = tournamentRepository.findById(tournamentId);
 
-        if (tournamentOptional.isEmpty()) {
+        if (!tournamentOptional.isPresent()) {
             throw new TournamentException(Utils.tournamentNotFoundMessage(tournamentId));
         }
 
