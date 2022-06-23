@@ -1,8 +1,5 @@
 package com.example.mycli.Alogic.entity;
 
-import com.example.mycli.model.UserEntity;
-import com.example.mycli.model.entity.Match;
-import com.example.mycli.model.entity.Participant;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
@@ -20,11 +17,7 @@ public class Tourney {
     private String name;
 
     @JsonIgnore
-    private String status;
-
-    @JsonIgnore
-    @ManyToMany
-    private List<UserEntity> participants;
+    private boolean onHold = true;
 
 }
 

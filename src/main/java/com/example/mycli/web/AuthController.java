@@ -65,6 +65,7 @@ public class AuthController {
         UserEntity user = new UserEntity();
         user.setPassword(password);
         user.setLogin(login);
+        user.setTourney(null);
         userService.saveUser(user);
     }
 

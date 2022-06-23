@@ -1,13 +1,19 @@
 package com.example.mycli.Alogic.entity;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> origin/main
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
 @Data
 @Entity
 @Table(name = "matchh")
@@ -38,4 +44,9 @@ public class Matchh {
     @JoinColumn(name = "tourney_id")
     private Tourney tourney;
 
+<<<<<<< HEAD
 }
+=======
+
+}
+>>>>>>> origin/main

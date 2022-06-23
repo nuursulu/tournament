@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface UserEntityRepository extends JpaRepository<UserEntity, Long> {
 
     UserEntity findByLogin(String login);
-    UserEntity findById(long clientID);
 
     @Modifying
     @Query("update UserEntity u set u.roleEntity = :role where u.login = :login")
