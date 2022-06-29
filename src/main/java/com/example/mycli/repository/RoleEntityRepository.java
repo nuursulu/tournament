@@ -1,7 +1,7 @@
 package com.example.mycli.repository;
 
 
-import com.example.mycli.model.RoleEntity;
+import com.example.mycli.entity.RoleEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
