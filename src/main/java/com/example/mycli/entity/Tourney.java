@@ -15,20 +15,28 @@ import java.util.List;
 @Table(name = "tourney")
 public class Tourney {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "name")
     private String name;
     @Column(name = "status")
     private String status;
 
-    @JsonIgnore
+//    @JsonIgnore
     @ManyToMany(mappedBy = "tourneyList")
-    private List<UserEntity> participants =  new ArrayList<>();;
+    private List<UserEntity> participants =  new ArrayList<>();
 
     @JsonIgnore
     @OneToMany(mappedBy = "tourney")
-    private List<Round> rounds =  new ArrayList<>();;
+    private List<Round> rounds =  new ArrayList<>();
+
+    public void addPlayer(UserEntity participant) {
+        participants.add(participant);
+        participant.addTourney(this);
+    }
+    public void addRound(Round round) {
+        rounds.add(round);
+    }
 
 }
 

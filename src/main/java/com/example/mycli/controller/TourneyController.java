@@ -1,56 +1,52 @@
 package com.example.mycli.controller;
 
+import com.example.mycli.entity.Tourney;
+import com.example.mycli.entity.UserEntity;
 import com.example.mycli.exceptions.tournamentException.TournamentException;
+import com.example.mycli.service.TourneyService;
+
+import com.example.mycli.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class TournamentController {
-//    private final TournamentService tournamentService;
-//
-//    public TournamentController(TournamentService tournamentService) {
-//        this.tournamentService = tournamentService;
-//    }
-//
-//    /**
-//     * Additional method, which returns all available tournaments.
-//     *
-//     * @return all available tournaments.
-//     */
-//    @GetMapping("/tournaments")
-//    public List<Tournament> get() {
-//        return tournamentService.findAllTournaments();
-//    }
-//
-//    /**
-//     * Gets tournament by id.
-//     *
-//     * @param id - tournaments' id.
-//     * @return tournament by id.
-//     * @throws TournamentException if there is no tournament with provided id.
-//     */
-//    @GetMapping("/tournaments/{id}")
-//    public Tournament get(@PathVariable Long id) throws TournamentException {
-//        return tournamentService.findTournamentById(id);
-//    }
-//
-//    /**
-//     * Creates new tournament.
-//     *
-//     * @param - tournament to create.
-//     * @return created tournament.
-//     * @throws TournamentException if maxParticipants is not provided or is not multiple of 8.
-//     */
-////    @PostMapping("/tournaments")
-////    public Tournament create(@RequestBody Tournament tournament)  throws TournamentException {
-////        return tournamentService.createTournament(tournament);
-////    }
-//    @PostMapping("/tournaments")
-//    public Tournament create(@RequestBody TournamentRequest tournament)  throws TournamentException {
-//        return tournamentService.createTournament(tournament);
-//    }
+public class TourneyController {
+
+    private final TourneyService tourneyService;
+    private final UserService userService;
+
+    @Autowired
+    public TourneyController(TourneyService tourneyService, UserService userService) {
+        this.tourneyService = tourneyService;
+        this.userService = userService;
+    }
+    @GetMapping("/tournaments")
+    public List<Tourney> get() {
+        return tourneyService.findAll();
+    }
+
+    @GetMapping("/tournaments/{id}")
+    public Tourney get(@PathVariable Long id) throws TournamentException {
+        return tourneyService.retrieve(id);
+    }
+
+    @PostMapping("/tournaments")
+    public Tourney create(@RequestBody Tourney tourney)  throws TournamentException {
+        return tourneyService.createTourney(tourney);
+    }
+
+    @PostMapping("/tournaments/{id}")
+    public void addParticipiant(@PathVariable Long id, Principal principal) {
+        tourneyService.addParticipiant(id,userService.findByLogin(principal));
+    }
+
+
+
+
 //
 //    /**
 //     * Starts tournament with provided id.

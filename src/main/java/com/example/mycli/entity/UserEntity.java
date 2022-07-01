@@ -41,5 +41,7 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<Tourney> tourneyList = new ArrayList<>();
 
-
+    public void addTourney(Tourney tourney){
+        tourneyList.add(tourney);
+    }
 }

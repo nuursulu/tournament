@@ -16,7 +16,7 @@ import java.util.List;
 @Table(name = "round")
 public class Round {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -32,6 +32,11 @@ public class Round {
     @JsonIgnore
     @OneToMany(mappedBy = "rounds")
     private List<Match> matches= new ArrayList<>();
+
+    public void addMatch(Match match) {
+        matches.add(match);
+        match.setRounds(this);
+    }
 
 
 
